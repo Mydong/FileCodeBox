@@ -2,6 +2,7 @@
 <h1>文件快递柜-轻量</h1>
 <h2>FileCodeBox-Lite</h2>
 <p><em>匿名口令分享文本，文件，像拿快递一样取文件</em></p>
+<p>交流Q群：739673698，欢迎各位集思广益，项目构思重构中</p>
 </div>
 
 ![banner](https://fastly.jsdelivr.net/gh/vastsa/FileCodeBox@V1.6/static/banners/img_1.png)
@@ -21,11 +22,19 @@
 - [x] 匿名分享：无需注册，无需登录
 - [x] 管理面板：查看所有文件，删除文件
 - [x] 一键部署：docker一键部署
-- [x] 多种存储方式：阿里云OSS、本地文件流
+- [x] 自由拓展：阿里云OSS、本地文件流，可根据需求在storage文件中新增存储引擎
+- [x] 简单明了：适合新手练手项目
 
 ## 部署方式
 
 ### Docker一键部署
+
+#### AMD 开发版（不稳定，待测试，新增分片异步上传，永久存储，不建议使用，很多没发现的坑）
+
+```bash
+docker run -d --restart=always -p 12345:12345 -v /opt/FileCodeBox/:/app/data --name filecodebox lanol/filecodebox:pre
+
+```
 
 #### AMD
 
@@ -38,6 +47,10 @@ docker run -d --restart=always -p 12345:12345 -v /opt/FileCodeBox/:/app/data --n
 ```bash
 docker run -d --restart=always -p 12345:12345 -v /opt/FileCodeBox/:/app/data --name filecodebox lanol/filecodebox:arm
 ```
+
+### 宝塔部署
+
+https://www.yuque.com/lxyo/work/lc1oe0xqk8t9b976
 
 ### 更新方式
 
