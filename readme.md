@@ -2,7 +2,8 @@
 <h1>文件快递柜-轻量</h1>
 <h2>FileCodeBox-Lite</h2>
 <p><em>匿名口令分享文本，文件，像拿快递一样取文件</em></p>
-<p>交流Q群：739673698，欢迎各位集思广益，项目构思重构中</p>
+<p>交流Q群：739673698</p>
+<p>使用AI解决问题：<a target='_blank' href='https://ailink.pw'>AiLink</a></p>
 </div>
 
 ![banner](https://fastly.jsdelivr.net/gh/vastsa/FileCodeBox@V1.6/static/banners/img_1.png)
@@ -19,42 +20,63 @@
 - [x] 防止爆破：错误次数限制
 - [x] 防止滥用：IP限制上传次数
 - [x] 口令分享：随机口令，存取文件，自定义次数以及有效期
+- [x] 国际化：支持中文和英文
 - [x] 匿名分享：无需注册，无需登录
 - [x] 管理面板：查看所有文件，删除文件
 - [x] 一键部署：docker一键部署
-- [x] 自由拓展：阿里云OSS、本地文件流，可根据需求在storage文件中新增存储引擎
+- [x] 自由拓展：S3协议、本地文件流，可根据需求在storage文件中新增存储引擎
 - [x] 简单明了：适合新手练手项目
+- [x] 终端下载：wget https://share.lanol.cn/share/select?code=83432
 
 ## 部署方式
 
+### 1Panel一键部署
+
+应用商店->实用工具->FileCodeBox
+![img_6.png](./.github/images/img_6.png)
+更新的话就是卸载重新安装即可
 ### Docker一键部署
 
-#### AMD 开发版（不稳定，待测试，新增分片异步上传，永久存储，不建议使用，很多没发现的坑）
+#### 2.0版本，开发中
+
+默认信息
+
+后端地址：`/#/admin`
+
+后台密码：`FileCodeBox2023`
+
+AMD & ARM
+
+一键安装
 
 ```bash
-docker run -d --restart=always -p 12345:12345 -v /opt/FileCodeBox/:/app/data --name filecodebox lanol/filecodebox:pre
+docker run -d --restart=always -p 12345:12345 -v /opt/FileCodeBox/:/app/data --name filecodebox lanol/filecodebox:beta
 
 ```
 
-#### AMD
+一键更新
+
+```bash
+docker pull lanol/filecodebox:beta && docker stop filecodebox && docker rm filecodebox && docker run -d --restart=always -p 12345:12345 -v /opt/FileCodeBox/:/app/data --name filecodebox lanol/filecodebox:beta
+```
+
+#### 1.6版本AMD
 
 ```bash
 docker run -d --restart=always -p 12345:12345 -v /opt/FileCodeBox/:/app/data --name filecodebox lanol/filecodebox:latest
 ```
 
-#### ARM
+#### 1.6版本ARM
 
 ```bash
 docker run -d --restart=always -p 12345:12345 -v /opt/FileCodeBox/:/app/data --name filecodebox lanol/filecodebox:arm
 ```
 
-### 宝塔部署
-
-https://www.yuque.com/lxyo/work/lc1oe0xqk8t9b976
-
 ### 更新方式
 
 ```bash
+// 更新
+docker pull lanol/filecodebox:beta
 // 停止容器并删除
 docker stop filecodebox && docker rm filecodebox
 // 重新运行容器
@@ -72,94 +94,42 @@ docker logs filecodebox
 
 ```
 
-### 其他方式
-
-仅供参考，历史版本->[部署文档](https://www.yuque.com/lxyo/work/zd0kvzy7fofx6w7v)
-
-## 项目规划
-
-2022年12月14日
-这个项目的灵感来源于丁丁快传，然后写了这么一个基于本机存储的快传系统，本系统主要是以轻量，单用户，离线环境（`私有化`
-）为主，因此也不需要加太多东西，所以其实这个项目到这基本功能已经完成了，剩下的就是维护和完善现有功能。
-也不会再加入新的大功能了，如果你有更好的想法和建议欢迎提issue。
-
 ## 预览
 
 ### 例站
 
 [https://share.lanol.cn](https://share.lanol.cn)
 
-### 暗黑模式
+### 截图
 
 <table style="width:100%">
-
 <tr style="width: 100%">
 <td style="width: 50%">
-<img src="https://fastly.jsdelivr.net/gh/vastsa/FileCodeBox@V1.6/images/img_10.png" alt="寄文件">
-
+<img src="./.github/images/img.png" alt="寄文件">
 </td>
 <td style="width: 50%">
-<img src="https://fastly.jsdelivr.net/gh/vastsa/FileCodeBox@V1.6/images/img_11.png" alt="寄文件">
-
+<img src="./.github/images/img_1.png" alt="寄文件">
+</td>
+</tr>
+<tr style="width: 100%">
+<td style="width: 50%">
+<img src="./.github/images/img_2.png" alt="寄文件">
+</td>
+<td style="width: 50%">
+<img src="./.github/images/img_3.png" alt="寄文件">
+</td>
+</tr>
+<tr style="width: 100%">
+<td style="width: 50%">
+<img src="./.github/images/img_4.png" alt="寄文件">
+</td>
+<td style="width: 50%">
+<img src="./.github/images/img_5.png" alt="寄文件">
 </td>
 </tr>
 </table>
 
-### 寄件
-
-<table style="width: 100%">
-<tr style="width: 100%">
-<td style="width: 50%">
-<img src="https://fastly.jsdelivr.net/gh/vastsa/FileCodeBox@V1.6/images/img_1.png" alt="寄文件">
-</td>
-<td style="width: 50%">
-<img src="https://fastly.jsdelivr.net/gh/vastsa/FileCodeBox@V1.6/images/img_2.png" alt="寄文本">
-</td>
-</tr>
-<tr style="width: 100%;">
-<td colspan="2" style="width: 100%;">
-<img src="https://fastly.jsdelivr.net/gh/vastsa/FileCodeBox@V1.6/images/img_3.png" alt="寄文本">
-</td>
-</tr>
-</table>
-
-### 取件
-
-<table style="width: 100%">
-<tr style="width: 100%">
-<td style="width: 50%">
-<img src="https://fastly.jsdelivr.net/gh/vastsa/FileCodeBox@V1.6/images/img_6.png" alt="取件">
-</td>
-<td style="width: 50%">
-<img src="https://fastly.jsdelivr.net/gh/vastsa/FileCodeBox@V1.6/images/img_5.png" alt="取件码错误">
-</td>
-</tr>
-<tr style="width: 100%;">
-<td colspan="2" style="width: 100%;">
-<img src="https://fastly.jsdelivr.net/gh/vastsa/FileCodeBox@V1.6/images/img_4.png" alt="取文件">
-</td>
-</tr>
-</table>
-
-### 管理
-
-<table style="width: 100%">
-<tr style="width: 100%">
-<td style="width: 50%">
-<img src="https://fastly.jsdelivr.net/gh/vastsa/FileCodeBox@V1.6/images/img_7.png" alt="admin">
-</td>
-<td style="width: 50%">
-<img src="https://fastly.jsdelivr.net/gh/vastsa/FileCodeBox@V1.6/images/img_12.png" alt="admin">
-</td>
-</tr>
-<tr style="width: 100%;">
-<td colspan="2" style="width: 100%;">
-<img src="https://fastly.jsdelivr.net/gh/vastsa/FileCodeBox@V1.6/images/img_13.png" alt="admin">
-</td>
-</tr>
-</table>
-
-## 配置文件
+## 配置文件（1.7及以下版本才需要）
 
 如果需要修改配置，可以将该文件放在`/opt/FileCodeBox/`目录下，并命名为`.env`，然后重启容器即可。
 如果不是Docker，则需要在项目同目录下新建一个`data`文件夹，然后在创建`.env`文件
@@ -210,68 +180,6 @@ OSS_ENDPOINT=阿里云OSS Bucket的地域节点
 BUCKET_NAME=阿里云OSS Bucket的BucketName
 ```
 
-## 接口文档
-
-前端比较简陋，可以使用接口进行二次开发
-
-### 取件
-
-#### PATH
-
-`/`
-
-#### METHOD
-
-`POST`
-
-#### PARAMS
-
-code: 取件码
-
-#### Response
-
-```json
-{
-  "detail": "msg",
-  "data": {
-    "type": "类型",
-    "text": "文本",
-    "name": "名称",
-    "code": "取件码"
-  }
-}
-```
-
-### 寄件
-
-#### PATH
-
-`/share`
-
-#### METHOD
-
-`POST`
-
-#### PARAMS
-
-style: 1为次数，2为时间
-value: 次数或时间
-text: 取件码
-file: 文件
-
-#### Response
-
-```json
-{
-  "detail": "msg",
-  "data": {
-    "code": "类型",
-    "key": "唯一ID",
-    "name": "名称"
-  }
-}
-```
-
 ## 状态
 
 ![Alt](https://repobeats.axiom.co/api/embed/7a6c92f1d96ee57e6fb67f0df371528397b0c9ac.svg "Repobeats analytics image")
@@ -279,21 +187,6 @@ file: 文件
 ## Star History
 
 [![Star History Chart](https://api.star-history.com/svg?repos=vastsa/FileCodeBox&type=Date)](https://star-history.com/#vastsa/FileCodeBox&Date)
-
-## 赞赏
-
-<table style="width: 100%">
-<tr style="width: 100%">
-<td style="width: 50%;text-align: center;">
-支付宝
-<img src="https://fastly.jsdelivr.net/gh/vastsa/FileCodeBox@V1.6/images/img_9.png" alt="支付宝">
-</td>
-<td style="width: 50%;text-align: center">
-微信
-<img src="https://fastly.jsdelivr.net/gh/vastsa/FileCodeBox@V1.6/images/img_8.png" alt="微信">
-</td>
-</tr>
-</table>    
 
 ## 常见问题
 

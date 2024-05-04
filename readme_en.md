@@ -1,136 +1,144 @@
 <div align="center">
 <h1>File Express Cabinet - Lite</h1>
-<h2>FileCodeBox - Lite</h2>
-<p><em>share text and files with anonymous passwords, and take files like express delivery </em></p>
+<h2>FileCodeBox-Lite</h2>
+<p><em>Anonymously share text and files, retrieve files like receiving packages</em></p>
+<p>Communication Q group: 739673698, welcome everyone to brainstorm, project conceptual reconstruction</p>
 </div>
 
 ![banner](https://fastly.jsdelivr.net/gh/vastsa/FileCodeBox@V1.6/static/banners/img_1.png)
 
-
 ---
 
-[简体中文](./readme.md) | [English](./readme_en.md)
+[Simplified Chinese](./readme.md) | [English](./readme_en.md)
 
-## Main features
+## Main Features
 
-- [x] lightweight and simple: Fastapi + Sqlite3 + Vue2 + ElementUI
-- [x] easy upload: copy and paste, drag and drop
-- [x] multiple types: Text, File
-- [x] explosion Prevention: error count limit
-- [x] prevent abuse: IP address limits the number of uploads
-- [x] password sharing: random password, file access, custom times, and validity period
-- [x] anonymous sharing: no registration, no login
-- [x] management Panel: View all files and delete them
-- [x] one-click deployment: docker one-click deployment
-- [x] A variety of storage methods : Aliyun OSS、 local file flow
+- [x] Lightweight and concise: Fastapi+Sqlite3+Vue3+ElementUI
+- [x] Easy upload: Copy and paste, drag and drop selection
+- [x] Multiple types: Text, file
+- [x] Prevent brute force: Limit the number of errors
+- [x] Prevent abuse: Limit the number of uploads by IP
+- [x] Password sharing: Random password, store and retrieve files, customize the number of times and validity period
+- [x] Anonymous sharing: No registration, no login, no IP records
+- [x] Management panel: View all files, delete files
+- [x] One-click deployment: Docker one-click deployment
+- [x] Free extension: S3 protocol, local file stream, can add storage engines in the storage file according to needs
+- [x] Simple and clear: Suitable for beginners' practice projects
 
-## Deployment method
+## Deployment Method
 
-### One-click Docker deployment
+### Docker one-click deployment
 
-#### AMD
+#### Version 2.0, under development
+
+Default information
+
+Backend address: `/#/admin`
+
+Backend password: `FileCodeBox2023`
+
+AMD & ARM
+
+One-click installation
+
+```bash
+docker run -d --restart=always -p 12345:12345 -v /opt/FileCodeBox/:/app/data --name filecodebox lanol/filecodebox:beta
+
+```
+
+One-click update
+
+```bash
+docker pull lanol/filecodebox:beta && docker stop filecodebox && docker rm filecodebox && docker run -d --restart=always -p 12345:12345 -v /opt/FileCodeBox/:/app/data --name filecodebox lanol/filecodebox:beta
+```
+
+#### Version 1.6 AMD
 
 ```bash
 docker run -d --restart=always -p 12345:12345 -v /opt/FileCodeBox/:/app/data --name filecodebox lanol/filecodebox:latest
 ```
 
-#### ARM
+#### Version 1.6 ARM
 
 ```bash
-docker run -d --restart=always -p 12345:12345 -v /Users/lan/soft/FileCodeBox/:/app/data --name filecodebox lanol/filecodebox:arm
+docker run -d --restart=always -p 12345:12345 -v /opt/FileCodeBox/:/app/data --name filecodebox lanol/filecodebox:arm
 ```
 
-### Update
+### Baota deployment
+
+Not recommended, outdated
+https://www.yuque.com/lxyo/work/lc1oe0xqk8t9b976
+
+### Version 1.6 Note
+
+This version has relatively large changes. If there are any problems, you can try clearing the /opt/FileCodeBox directory. If you have any problems, please feel free to leave
+feedback.
+Note that if this is the first installation, please check the docker log to get the initial password and backend address, and refer to the instructions
+For the local file list of the background, you need to move the server files to the directory /opt/FileCodeBox/data/locals so that they can be displayed.
 
 ```bash
-// 找到容器ID
-docker ps -a
-// 停止容器并删除
-docker stop 容器ID && docker rm 容器ID
-// 重新运行容器
-docker run -d --restart=always -p 12345:12345 -v /opt/FileCodeBox/:/app/data --name filecodebox lanol/filecodebox:latest
+docker logs filecodebox
 ```
-
-### Other methods
-
-For reference only, historical version->[部署文档](https://www.yuque.com/lxyo/work/zd0kvzy7fofx6w7v)
-
-## Project Plan
-
-December 14, 2022
-This project is mainly light-weight, mainly single-user, offline environment, so there is no need to add too many
-things, so in fact, the basic functions of this project have been completed, and the rest is to maintain and improve the
-existing functions.
-
-No new major functions will be added. If there are new functions, it will be our Pro version. Of course, it will
-continue to be open source. It is an honor to be open source with @veoco. I learned from his code Many, I basically used
-the Django set before, and only used Fastapi. Many of his writing methods have benefited me a lot, and I have a deeper
-understanding of Fastapi, so I will also use Fastapi in the Pro version .
-
-According to some current feedback, I hope to add multi-user functions and multi-storage engines, etc. Welcome to
-continue to give comments and join us in joint development.
-
-If you have better ideas and suggestions, welcome to file an issue.
 
 ## Preview
 
-### Demo
+### Example site
 
 [https://share.lanol.cn](https://share.lanol.cn)
 
-### Dark Theme
+### Dark mode
 
 <table style="width:100%">
 
 <tr style="width: 100%">
 <td style="width: 50%">
-<img src="https://fastly.jsdelivr.net/gh/vastsa/FileCodeBox@V1.6/images/img_10.png" alt="寄文件">
+<img src="https://fastly.jsdelivr.net/gh/vastsa/FileCodeBox@V1.6/images/img_10.png" alt="Send files">
 
 </td>
 <td style="width: 50%">
-<img src="https://fastly.jsdelivr.net/gh/vastsa/FileCodeBox@V1.6/images/img_11.png" alt="寄文件">
+<img src="https://fastly.jsdelivr.net/gh/vastsa/FileCodeBox@V1.6/images/img_11.png" alt="Send files">
 
 </td>
 </tr>
 </table>
 
-### Send
+### Sending
 
 <table style="width: 100%">
 <tr style="width: 100%">
 <td style="width: 50%">
-<img src="https://fastly.jsdelivr.net/gh/vastsa/FileCodeBox@V1.6/images/img_1.png" alt="寄文件">
+<img src="https://fastly.jsdelivr.net/gh/vastsa/FileCodeBox@V1.6/images/img_1.png" alt="Send files">
 </td>
 <td style="width: 50%">
-<img src="https://fastly.jsdelivr.net/gh/vastsa/FileCodeBox@V1.6/images/img_2.png" alt="寄文本">
+<img src="https://fastly.jsdelivr.net/gh/vastsa/FileCodeBox@V1.6/images/img_2.png" alt="Send text">
 </td>
 </tr>
 <tr style="width: 100%;">
 <td colspan="2" style="width: 100%;">
-<img src="https://fastly.jsdelivr.net/gh/vastsa/FileCodeBox@V1.6/images/img_3.png" alt="寄文本">
+<img src="https://fastly.jsdelivr.net/gh/vastsa/FileCodeBox@V1.6/images/img_3.png" alt="Send text">
 </td>
 </tr>
 </table>
 
-### Receive
+### Retrieving
 
 <table style="width: 100%">
 <tr style="width: 100%">
 <td style="width: 50%">
-<img src="https://fastly.jsdelivr.net/gh/vastsa/FileCodeBox@V1.6/images/img_6.png" alt="取件">
+<img src="https://fastly.jsdelivr.net/gh/vastsa/FileCodeBox@V1.6/images/img_6.png" alt="Retrieve">
 </td>
 <td style="width: 50%">
-<img src="https://fastly.jsdelivr.net/gh/vastsa/FileCodeBox@V1.6/images/img_5.png" alt="取件码错误">
+<img src="https://fastly.jsdelivr.net/gh/vastsa/FileCodeBox@V1.6/images/img_5.png" alt="Wrong retrieval code">
 </td>
 </tr>
 <tr style="width: 100%;">
 <td colspan="2" style="width: 100%;">
-<img src="https://fastly.jsdelivr.net/gh/vastsa/FileCodeBox@V1.6/images/img_4.png" alt="取文件">
+<img src="https://fastly.jsdelivr.net/gh/vastsa/FileCodeBox@V1.6/images/img_4.png" alt="Retrieve file">
 </td>
 </tr>
 </table>
 
-### Manage
+### Management
 
 <table style="width: 100%">
 <tr style="width: 100%">
@@ -148,12 +156,10 @@ If you have better ideas and suggestions, welcome to file an issue.
 </tr>
 </table>
 
-## Configuration file
+## Configuration file (only required for version 1.7 and below)
 
-if you need to modify the configuration, you can put the file in `/opt/FileCodeBox/` directory and name it `.env` , and
-then restart the container.
-If it is not Docker, you need to create a `data` folder in the same directory as the project, and then create a `.env`
-file
+If you need to modify the configuration, you can place this file in the `/opt/FileCodeBox/` directory and name it `.env`, then restart the container.
+If it is not Docker, you need to create a `data` folder in the same directory as the project, and then create a `.env` file.
 
 ```dotenv
 # 端口
@@ -209,22 +215,30 @@ BUCKET_NAME=阿里云OSS Bucket的BucketName
 
 [![Star History Chart](https://api.star-history.com/svg?repos=vastsa/FileCodeBox&type=Date)](https://star-history.com/#vastsa/FileCodeBox&Date)
 
-## Appreciate
+## Appreciation
 
 <table style="width: 100%">
 <tr style="width: 100%">
 <td style="width: 50%;text-align: center;">
-支付宝
-<img src="https://fastly.jsdelivr.net/gh/vastsa/FileCodeBox@V1.6/images/img_9.png" alt="支付宝">
+Alipay
+<img src="https://fastly.jsdelivr.net/gh/vastsa/FileCodeBox@V1.6/images/img_9.png" alt="Alipay">
 </td>
 <td style="width: 50%;text-align: center">
-微信
-<img src="https://fastly.jsdelivr.net/gh/vastsa/FileCodeBox@V1.6/images/img_8.png" alt="微信">
+WeChat
+<img src="https://fastly.jsdelivr.net/gh/vastsa/FileCodeBox@V1.6/images/img_8.png" alt="WeChat">
 </td>
 </tr>
 </table>    
 
+## Frequently Asked Questions
+
+1. 413 Request Entity Too Large
+   Nginx restriction:
+   Find the nginx.conf configuration file of your host and open it.
+   Add `client_max_body_size 10m;` inside the `http{}` block.
+   Then restart nginx.
+
 ## Disclaimer
 
-this project is open source for learning only and cannot be used for any illegal purposes. Otherwise, you will be
-responsible for the consequences and have nothing to do with yourself. Please keep the project address. Thank you.
+This project is open source and is intended for learning purposes only. It must not be used for any illegal purposes. Any consequences arising from such use are the sole
+responsibility of the user and are not related to me. Please keep the project address when using. Thank you.
